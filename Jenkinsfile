@@ -19,7 +19,7 @@ pipeline {
                 
                 echo 'Building...'
                 //sh 'sleep 10'
-                
+
                
             }
         }
@@ -40,6 +40,18 @@ pipeline {
                 echo "Run Tests: ${params.RUN_TESTS}"
                 echo "Environment: ${params.ENVIRONMENT}"
             }
+        }
+        stage('Approval') {
+             input {
+                id: 'DeployConfirm',           // Optional ID
+                message: 'Do you want to deploy?',  // Message shown to user
+                ok: 'Yes, Deploy',             // Text on button instead of "Proceed"
+                submitter: 'admin,user1'       // Only these users can click
+
+             }
+             steps {
+                echo "after approval"
+             }
         }
     }
     post{
