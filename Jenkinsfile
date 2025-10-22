@@ -44,6 +44,7 @@ pipeline {
         stage('Approval') {
              steps {
              input message: 'Approve deployment?', ok: 'Proceed'
+             echo "approved"
            }
 
         }
