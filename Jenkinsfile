@@ -34,9 +34,11 @@ pipeline {
             }
         }
         stage('print params'){
+            steps{
                 echo "Username: ${params.USERNAME}"
                 echo "Run Tests: ${params.RUN_TESTS}"
                 echo "Environment: ${params.ENVIRONMENT}"
+            }
         }
     }
     post{
