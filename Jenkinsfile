@@ -43,10 +43,9 @@ pipeline {
         }
         stage('Approval') {
              input {
-                id: 'DeployConfirm',           // Optional ID
-                message: 'Do you want to deploy?',  // Message shown to user
-                ok: 'Yes, Deploy',             // Text on button instead of "Proceed"
-                submitter: 'admin,user1'       // Only these users can click
+                message: 'Do you want to deploy?'  // Message shown to user
+                ok: 'Yes, Deploy'            // Text on button instead of "Proceed"
+                submitter: 'admin,user1'      // Only these users can click
 
              }
              steps {
