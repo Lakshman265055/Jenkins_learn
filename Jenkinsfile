@@ -30,7 +30,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying...'
-                 error 'pipeline failed'
+                //error 'pipeline failed'
             }
         }
         stage('print params'){
