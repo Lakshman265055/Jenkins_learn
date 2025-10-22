@@ -42,15 +42,10 @@ pipeline {
             }
         }
         stage('Approval') {
-             input {
-                message: 'Do you want to deploy?'  // Message shown to user
-                ok: 'Yes, Deploy'            // Text on button instead of "Proceed"
-                submitter: 'admin,user1'      // Only these users can click
-
-             }
              steps {
-                echo "after approval"
-             }
+             input message: 'Approve deployment?', ok: 'Proceed'
+           }
+
         }
     }
     post{
