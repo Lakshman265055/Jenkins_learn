@@ -7,6 +7,11 @@ pipeline {
         disableConcurrentBuilds()
         retry(1)
     }
+    parameters {
+        string(name: 'USERNAME', defaultValue: 'admin', description: 'Enter your username')
+        booleanParam(name: 'RUN_TESTS', defaultValue: true, description: 'Run test cases?')
+        choice(name: 'ENVIRONMENT', choices: ['DEV', 'QA', 'PROD'], description: 'Select the deployment environment')
+    }
 
     stages {
         stage('Build') {
@@ -27,6 +32,11 @@ pipeline {
                 echo 'Deploying...'
                  error 'pipeline failed'
             }
+        }
+        stage('print params'){
+                echo "Username: ${params.USERNAME}"
+                echo "Run Tests: ${params.RUN_TESTS}"
+                echo "Environment: ${params.ENVIRONMENT}"
         }
     }
     post{
